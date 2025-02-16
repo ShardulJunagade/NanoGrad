@@ -11,6 +11,12 @@ class Module:
 
 
 class Neuron(Module):
+  """
+  A simple neuron with a fixed number of inputs and a given activation function.
+  Args:
+    nin (int): Number of inputs.
+    activation (str): Activation function. Can be 'relu', 'sigmoid', 'leaky_relu', 'tanh' or 'linear'.
+  """
   def __init__(self, nin, activation='linear'):
     self.w = [Value(random.uniform(-1, 1)) for _ in range(nin)]
     self.b = Value(0)
@@ -40,6 +46,13 @@ class Neuron(Module):
 
 
 class Layer(Module):
+  """
+  A layer of neurons.
+  Args:
+    nin (int): Number of inputs.
+    nout (int): Number of neurons.
+    activation (str): Activation function. Can be 'relu', 'sigmoid', 'leaky_relu', 'tanh' or 'linear'.
+  """
   def __init__(self, nin, nout, activation='relu'):
     self.neurons = [Neuron(nin, activation) for _ in range(nout)]
   
@@ -55,6 +68,13 @@ class Layer(Module):
 
 
 class MLP(Module):
+  """
+  A multi-layer perceptron.
+  Args:
+    nin (int): Number of inputs.
+    nouts (list of int): Number of neurons in each layer.
+    activations (list of str): Activation function for each layer. Can be 'relu', 'sigmoid', 'leaky_relu', 'tanh' or 'linear'.
+  """
   def __init__(self, nin, nouts, activations=None):
     sz = [nin] + nouts
     if activations is None:
