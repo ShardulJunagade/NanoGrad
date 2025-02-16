@@ -26,7 +26,7 @@ NanoGrad is a lightweight autograd engine that implements backpropagation (rever
 4. Run [test_engine.py](misc/test_engine.py) for sanity checks.
 
 
-## ✨ Example usage
+## Example usage
 
 The following example demonstrates how to construct and differentiate a simple computational graph:
 
